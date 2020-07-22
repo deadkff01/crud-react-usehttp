@@ -37,7 +37,7 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto" data-testid="container">
       <h1 className="mt-5 text-4xl font-bold">Consoles</h1>
       <div className="mb-5 text-right">
         <button

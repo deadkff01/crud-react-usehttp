@@ -21,7 +21,7 @@ const Spinner = styled.div`
 `;
 
 const Loader = () => (
-  <Spinner>
+  <Spinner data-testid="spinner-loader">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       xlink="http://www.w3.org/1999/xlink"

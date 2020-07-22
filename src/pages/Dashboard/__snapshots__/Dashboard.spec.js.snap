@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard component renders the component 1`] = `
+Array [
+  <div
+    class="container mx-auto"
+    data-testid="container"
+  >
+    <h1
+      class="mt-5 text-4xl font-bold"
+    >
+      Consoles
+    </h1>
+    <div
+      class="mb-5 text-right"
+    >
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Add Item
+      </button>
+    </div>
+    <ul
+      class="grid grid-cols-3 gap-10"
+    >
+      <li
+        class="border-solid border-2 border-gray-600 max-w-sm rounded overflow-hidden shadow-lg p-2"
+      >
+        <h1
+          class="text-xl font-bold"
+        >
+          Nintendo Switch
+        </h1>
+        <h2
+          class="text-lg font-bold"
+        >
+          2500
+        </h2>
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-5"
+        >
+          Details
+        </button>
+        <button
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Remove
+        </button>
+      </li>
+      <li
+        class="border-solid border-2 border-gray-600 max-w-sm rounded overflow-hidden shadow-lg p-2"
+      >
+        <h1
+          class="text-xl font-bold"
+        >
+          Playstation 4
+        </h1>
+        <h2
+          class="text-lg font-bold"
+        >
+          1500
+        </h2>
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-5"
+        >
+          Details
+        </button>
+        <button
+          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Remove
+        </button>
+      </li>
+    </ul>
+  </div>,
+]
+`;
