@@ -16,11 +16,23 @@ import "../../setupTests";
 
 const server = setupServer();
 
+const getItems = () =>
+  rest.get("http://localhost:8080/get-items", (_, res, ctx) => {
+    return res(ctx.status(200), ctx.json(itemsMock));
+  });
+
+const getItemsError = () =>
+  rest.get("http://localhost:8080/get-items", (_, res, ctx) => {
+    return res(ctx.status(500), ctx.json({ message: "Internal Server Error" }));
+  });
+
 describe("Dashboard component", () => {
-  beforeAll(() => server.listen());
+  beforeAll(() => {
+    server.listen();
+    jest.useRealTimers();
+  });
 
   afterEach(() => {
-    jest.useFakeTimers();
     server.resetHandlers();
   });
 
@@ -30,30 +42,40 @@ describe("Dashboard component", () => {
   });
 
   test("renders the component", async () => {
-    const { getAllByTestId } = renderWithRouter(<Dashboard />);
+    const { getByTestId } = renderWithRouter(<Dashboard />);
     await act(async () => {
-      server.use(
-        rest.get("http://localhost:8080/get-items", (req, res, ctx) => {
-          return res(ctx.status(200), ctx.json(itemsMock));
-        })
-      );
+      server.use(getItems());
     });
-    const element = await waitForElement(() => getAllByTestId("container"));
+    const element = await waitForElement(() => getByTestId("container"));
     expect(element).toMatchSnapshot();
   });
 
   test("renders the loader", async () => {
+    jest.useFakeTimers();
+    const { getByTestId } = renderWithRouter(<Dashboard />);
+    await act(async () => {
+      server.use(getItems());
+    });
+    const element = await waitForElement(() => getByTestId("spinner-loader"));
+    expect(element).toBeDefined();
+  });
+
+  test("renders the error", async () => {
+    jest.useRealTimers(); // problem to be reviewed
+    const { getByTestId } = renderWithRouter(<Dashboard />);
+    await act(async () => {
+      server.use(getItemsError());
+    });
+    const element = await waitForElement(() => getByTestId("error"));
+    expect(element).toBeDefined();
+  });
+
+  test("item cards count", async () => {
     const { getAllByTestId } = renderWithRouter(<Dashboard />);
     await act(async () => {
-      server.use(
-        rest.get("http://localhost:8080/get-items", (req, res, ctx) => {
-          return res(ctx.status(200), ctx.json(itemsMock));
-        })
-      );
+      server.use(getItems());
     });
-    const element = await waitForElement(() =>
-      getAllByTestId("spinner-loader")
-    );
-    expect(element).toBeDefined();
+    const element = await waitForElement(() => getAllByTestId("item-card"));
+    expect(element.length).toBe(2);
   });
 });

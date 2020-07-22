@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   async function loadItems() {
     const itemsResponse = await get("get-items");
-    console.log(itemsResponse);
+    // console.log(itemsResponse);
     if (response.ok) setItems(itemsResponse);
   }
 
@@ -29,7 +29,11 @@ const Dashboard = () => {
   };
 
   if (error) {
-    return <div>Error</div>;
+    return (
+      <div data-testid="error">
+        <h1 className="mt-5 text-4xl text-center font-bold">Error</h1>
+      </div>
+    );
   }
 
   if (loading) {
@@ -51,6 +55,7 @@ const Dashboard = () => {
         {items.map(({ id, name, price }) => (
           <li
             key={id}
+            data-testid="item-card"
             className="border-solid border-2 border-gray-600 max-w-sm rounded overflow-hidden shadow-lg p-2"
           >
             <h1 className="text-xl font-bold">{name}</h1>
