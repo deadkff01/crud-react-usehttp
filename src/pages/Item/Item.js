@@ -21,6 +21,7 @@ const Item = () => {
 
   async function loadItem() {
     const item = await get(`get-item-by-id/${params.id}`);
+    console.log(item);
     if (response.ok) {
       setId(item.id);
       setName(item.name);
@@ -49,7 +50,12 @@ const Item = () => {
   return (
     <div className="mt-5 container mx-auto">
       <div className="mb-5">
-        Name: <Input value={name} onChange={(e) => setName(e.target.value)} />
+        Name:{" "}
+        <Input
+          data-testid="input-name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
       <div className="mb-5">
         Price:
