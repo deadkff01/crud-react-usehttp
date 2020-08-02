@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Router,
   createHistory,
   createMemorySource,
   LocationProvider,
@@ -12,6 +13,20 @@ export function renderWithRouter(
 ) {
   return {
     ...render(<LocationProvider history={history}>{ui}</LocationProvider>),
+    history,
+  };
+}
+
+export function renderWithRouterParams(
+  ui,
+  { route = "/", history = createHistory(createMemorySource(route)) } = {}
+) {
+  return {
+    ...render(
+      <LocationProvider history={history}>
+        <Router>{ui}</Router>
+      </LocationProvider>
+    ),
     history,
   };
 }

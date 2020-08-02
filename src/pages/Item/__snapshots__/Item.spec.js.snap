@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Item component renders the component 1`] = `
+<div
+  class="mt-5 container mx-auto"
+  data-testid="container-item"
+>
+  <div
+    class="mb-5"
+  >
+    Name:
+     
+    <input
+      class="css-1he0wrf"
+      data-testid="input-name"
+      value=""
+    />
+  </div>
+  <div
+    class="mb-5"
+  >
+    Price:
+    <input
+      class="css-1he0wrf"
+      type="number"
+      value=""
+    />
+  </div>
+  <div
+    class="mb-10"
+  >
+    Description:
+    <textarea
+      class="css-9jjzdi"
+      rows="3"
+    />
+  </div>
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  >
+    Update
+  </button>
+</div>
+`;

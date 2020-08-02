@@ -12,16 +12,17 @@
     "msw": "^0.19.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "3.4.0",
     "use-http": "^1.0.13"
   },
   "scripts": {
     "build:css": "postcss src/static/css/index.css -o src/index.css",
     "watch:css": "postcss src/static/css/index.css -o src/index.css",
-    "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "start": "yarn watch:css && react-scripts start",
+    "build": "yarn build:css && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:coverage": "CI=true && react-scripts test --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -26,11 +26,8 @@ describe("App component", () => {
 
     server.use(getItems());
 
-    await screen.findAllByTestId("item-card");
-
-    await navigate("/item/1");
-
     await act(async () => {
+      await navigate("/item/1");
       server.use(getItemById(1));
     });
 
